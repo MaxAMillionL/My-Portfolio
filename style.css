@@ -1,7 +1,40 @@
+:root{
+    cursor: url("icons/Cursor.png"), auto;
+
+}
 body{
-    background-color: #008080
+    background-color: #008080;
+    /* cursor: url('path-to-your-pixel-cursor.png'), auto; */
+    
+}
+.icons{
+    position: absolute;
+    display:grid;
+    left: 0%;
+    -webkit-user-drag: none; /* For older WebKit browsers */
+    user-select: none;
+    -webkit-user-select: none; /* For older WebKit browsers */
+}
+.icon{
+    position: relative;
+    padding-bottom:.5em;
+    padding-top: .5em;
+    padding-left: .5em;
+    text-align: center;
+    -webkit-user-drag: none; /* For older WebKit browsers */
+    user-select: none;
+    -webkit-user-select: none; /* For older WebKit browsers */
+    
 }
 .icon-text{
+    position: relative;
     font-family: "Pixelated MS Sans Serif";
-    color: #FFFFFF
+    color: #FFFFFF;
+    padding-top: .2em;
+}
+.dark {
+    filter: brightness(40%); /* Turn into dark shadow version of image */
+}
+.bright {
+    filter: brightness(120%) /* Turn into selected version of image */
 }
