@@ -1,15 +1,17 @@
 :root{
     cursor: url("icons/Cursor.png"), auto;
 }
-.icon:hover{
-    cursor: url("icons/Cursor_pointer.png"), auto;
-}
+
 body{
     background-color: #008080;
-    /* cursor: url('path-to-your-pixel-cursor.png'), auto; */
-    
+    cursor: url("icons/Cursor.png"), auto;    
 }
-
+a:hover{
+    cursor: url("icons/Cursor_pointer.png"), auto;
+}
+button:hover{
+    cursor: url("icons/Cursor.png"), auto; 
+}
 .icons{
     position: absolute;
     display:grid;
@@ -34,6 +36,9 @@ body{
     font-family: "Pixelated MS Sans Serif";
     color: #FFFFFF;
     padding-top: .2em;
+}
+.icon:hover{
+    cursor: url("icons/Cursor_pointer.png"), auto;
 }
 .dark {
     filter: brightness(40%); /* Turn into dark shadow version of image */
