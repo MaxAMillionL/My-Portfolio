@@ -1,24 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const myImage = document.getElementById('icon');
-
-    // Check if the element was found before adding the event listener
     
+    
+    const images = document.querySelectorAll(".icon-image")
+    images.forEach((image) => {
 
-    myImage.addEventListener("mouseleave", function() {
-        myImage.classList.remove("dark"); // Remove the class if the mouse leaves while held down
-        myImage.classList.remove("bright") // Remove the class if the mouse leaves while held down
-    });
+        // goes through all icon images and gives them hover and click attributes for style
+        image.addEventListener("mouseleave", function() {
+            image.classList.remove("dark");
+            image.classList.remove("bright")
+        });
+        image.addEventListener("mouseover", function() {
+            image.classList.add("bright");
+        });
 
-    myImage.addEventListener("mouseover", function() {
-        myImage.classList.add("bright"); // Add the class on mouse hover
-    });
+        image.addEventListener("mousedown", function() {
+            image.classList.add("dark");
+            image.classList.remove("bright")
+        });
 
-    myImage.addEventListener("mousedown", function() {
-        myImage.classList.add("dark"); // Add the class on click down
-        myImage.classList.remove("bright") // Remove the class if the mouse leaves while held down  
-    });
+        image.addEventListener("mouseup", function() {
+            image.classList.remove("dark");
+        });
 
-    myImage.addEventListener("mouseup", function() {
-        myImage.classList.remove("dark"); // Remove the class on click release
+        // if you click an icon, it will open the appropriate window on the desktop
+        image.addEventListener("click", function() {
+            const windowName = image.id + "-window"; 
+            displayType = window.getComputedStyle(document.getElementById(windowName)).display;
+            if(displayType == "block"){
+                document.getElementById(windowName).style.display = "none";
+            }
+            else{
+                document.getElementById(windowName).style.display = "block";
+            }
+        });
     });
 });
+
+
+
+

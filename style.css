@@ -1,16 +1,12 @@
 :root{
     cursor: url("icons/Cursor.png"), auto;
 }
-
 body{
     background-color: #008080;
     cursor: url("icons/Cursor.png"), auto;    
 }
-a:hover{
-    cursor: url("icons/Cursor_pointer.png"), auto;
-}
 button:hover{
-    cursor: url("icons/Cursor.png"), auto; 
+    cursor: url("icons/Cursor.png"), auto;  
 }
 .icons{
     position: absolute;
@@ -22,9 +18,9 @@ button:hover{
 }
 .icon{
     position: relative;
-    padding-bottom:.5em;
+    padding-bottom:.3em;
     padding-top: .5em;
-    padding-left: .5em;
+    padding-left: .3em;
     text-align: center;
     -webkit-user-drag: none; /* For older WebKit browsers */
     user-select: none;
@@ -35,10 +31,9 @@ button:hover{
     position: relative;
     font-family: "Pixelated MS Sans Serif";
     color: #FFFFFF;
-    padding-top: .2em;
 }
-.icon:hover{
-    cursor: url("icons/Cursor_pointer.png"), auto;
+.window{
+    display: none;
 }
 .dark {
     filter: brightness(40%); /* Turn into dark shadow version of image */
