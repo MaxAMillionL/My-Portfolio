@@ -1,12 +1,15 @@
 :root{
     cursor: url("icons/Cursor.png"), auto;
-
+}
+.icon:hover{
+    cursor: url("icons/Cursor_pointer.png"), auto;
 }
 body{
     background-color: #008080;
     /* cursor: url('path-to-your-pixel-cursor.png'), auto; */
     
 }
+
 .icons{
     position: absolute;
     display:grid;
