@@ -25,7 +25,6 @@ button:hover{
     -webkit-user-drag: none; /* For older WebKit browsers */
     user-select: none;
     -webkit-user-select: none; /* For older WebKit browsers */
-    
 }
 .icon-text{
     position: relative;
