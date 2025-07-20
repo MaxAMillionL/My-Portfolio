@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no" />    <title>Max's Millions</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />    <title>Max's Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -22,6 +23,12 @@
             <img src="icons\directory_closed-3.png" name="My Photos" class="icon-image" id="photos" draggable="false">
             <div class="icon-text">
                 My Photos
+            </div>
+        </div>
+        <div class="icon">
+            <img src="icons\game_mine_1-0.png" name="Minesweeper" class="icon-image" id="minesweeper" draggable="false">
+            <div class="icon-text">
+                Minesweeper
             </div>
         </div>
     </div>
@@ -51,6 +58,29 @@
     </div>
 
     <div id="photos-window" class="window" style="width: 25em; position: absolute; left: 30%; top:20%">
+        <div class="title-bar">
+            <div class="title-bar-text">My Photos</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <ul class="tree-view">
+            <li>Table of Contents</li>
+            <li>
+                <details open>
+                <summary>Photos</summary>
+                <ul>
+                    <li><a href="projects.html">Photo 1</a></li>
+                    <li><a href="projects.html">Photo 2</a></li>
+                    <li><a href="projects.html">Photo 3</a></li>
+                </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+
+    <div id="minesweeper-window" class="window" style="width: 25em; position: absolute; left: 40%; top:30%">
         <div class="title-bar">
             <div class="title-bar-text">My Photos</div>
             <div class="title-bar-controls">
