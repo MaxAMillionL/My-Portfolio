@@ -1,3 +1,5 @@
+zIndexCounter = 1;
+
 document.addEventListener('DOMContentLoaded', () => {
     
     
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image.classList.remove("dark");
         });
 
-        // if you click an icon, it will open the appropriate window on the desktop
+        // opens a tab if an icon is clicked
         image.addEventListener("click", function() {
             const windowName = image.id + "-window"; 
             displayType = window.getComputedStyle(document.getElementById(windowName)).display;
@@ -32,10 +34,25 @@ document.addEventListener('DOMContentLoaded', () => {
             else{
                 document.getElementById(windowName).style.display = "block";
             }
+            document.getElementById(windowName).style.zIndex = zIndexCounter;
+            zIndexCounter++;
         });
+
+
+        // this changes the z-index of the iamge
+    });
+
+    // Goes through all windows to check for updates
+    const windows = document.querySelectorAll(".window")
+    windows.forEach((window) => {
+        // Moves a window to the front if it is clicked
+        window.addEventListener("click", function() {
+            const windowName = window.id
+            document.getElementById(windowName).style.zIndex = zIndexCounter;
+            zIndexCounter++;
+        });
+        
     });
 });
-
-
 
 
