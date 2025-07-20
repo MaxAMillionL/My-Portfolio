@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // // Goes through all headers to check for updates
+    // Goes through all headers to check for updates
     const headers = document.querySelectorAll(".title-bar");
     headers.forEach((header) => {
         header.addEventListener("mousedown", function (e) {
-            //find window associated with header
+            //Find window associated with header
             const window = header.closest(".window");
 
             // Bring to front
@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Stops dragging the wrong element by accident. Checks for the correct window and correct header combination
             if (e.target !== window && !window.contains(e.target))
                 return;
+            
+            // Prevents text selection on other windows
+            document.body.style.userSelect = "none";
 
             // Find offsets from mouse to window
             let dX = e.clientX - window.offsetLeft;
@@ -76,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             function onMouseUp() {
+                // Restore text selection
+                document.body.style.userSelect = "";
+
                 document.removeEventListener("mousemove", onMouseMove);
                 document.removeEventListener("mouseup", onMouseUp);
             }

@@ -3,4 +3,6 @@
 3. Make windows zoom up instead of just appear
 4. Add minesweeper
 5. Add projects in projects folder
-6. Make windows draggable
+6. Make windows draggable (completed)
+7. Make icons draggable
+8. Make blue drag selection box
