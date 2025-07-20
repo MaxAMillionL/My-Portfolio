@@ -34,6 +34,7 @@ button:hover{
 }
 .window{
     display: none;
+    position: absolute;
 }
 .dark {
     filter: brightness(40%); /* Turn into dark shadow version of image */
