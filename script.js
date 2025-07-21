@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // makes sure to mimize correct window
             if (e.target !== windowElement && !windowElement.contains(e.target))
                 return;
-
+            // addIcon(windowElement);
             document.getElementById(windowElement.id).style.display = "none";
         })
         close.addEventListener("click", function(e) {
@@ -73,13 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Goes through all windows to check for updates
     const windows = document.querySelectorAll(".window")
-    windows.forEach((window) => {
+    windows.forEach((windowElement) => {
         // Moves a window to the front if it is clicked
-        window.addEventListener("click", function() {
-            const windowName = window.id
+        windowElement.addEventListener("click", function() {
+            
+            const windowName = windowElement.id
             document.getElementById(windowName).style.zIndex = zIndexCounter;
             zIndexCounter++;
         });
+        windowElement.addEventListener("mouseover", function(e) {
+            resizeBound = 10;
+            const rect = windowElement.getBoundingClientRect();
+            
+        })
     });
 
     // Goes through all headers to check for updates

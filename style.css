@@ -22,7 +22,7 @@ button:hover{
 .icon{
     position: relative;
     padding-bottom:.3em;
-    padding-top: .5em;
+    padding-top: .7em;
     padding-left: .3em;
     text-align: center;
     -webkit-user-drag: none; /* For older WebKit browsers */
@@ -52,4 +52,13 @@ button:hover{
     left: 0;
     bottom: 0%;
     margin: 0px auto;
+    align-items: center - 2px;
+}
+.taskbar-inner-line {
+    position: absolute;
+    background-color: #fdffff;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    top: 0px;
 }

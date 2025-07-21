@@ -6,7 +6,9 @@
     <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="minesweeper.css">
     <script src="script.js"></script>
+    <script src="minesweeper.js"></script>
 </head>
 
 <body>
@@ -102,35 +104,25 @@
 
     <div id="minesweeper-window" class="window" style="width: 25em; position: absolute; left: 30%; top:20%">
         <div class="title-bar">
-            <div class="title-bar-text">My Photos</div>
+            <div class="title-bar-text">Minesweeper</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize"></button>
                 <button aria-label="Close"></button>
             </div>
         </div>
-        <ul class="tree-view">
-            <li>Table of Contents</li>
-            <li>
-                <details open>
-                <summary>Photos</summary>
-                <ul>
-                    <li><a href="projects.html">Photo 1</a></li>
-                    <li><a href="projects.html">Photo 2</a></li>
-                    <li><a href="projects.html">Photo 3</a></li>
-                </ul>
-                </details>
-            </li>
-        </ul>
+        <div id="minsweeper-game">
+
+        </div>
     </div>
 
     
     
     <!-- Taskbar -->
     <div class="taskbar" id="bottom-taskbar">
+        <div class="taskbar-inner-line"></div>
         <div class="icon" >
             <img src="icons\computer_explorer-2.png" name="My Projects" class="icon-image" id="projects" draggable="false">
         </div>
     </div>
 </body>
-
 </html>
