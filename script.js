@@ -1,7 +1,12 @@
 zIndexCounter = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+    document.querySelectorAll('a').forEach(function(link) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+
+
     // Goes through all icons to check for updates
     const images = document.querySelectorAll(".icon-image")
     images.forEach((image) => {
@@ -57,25 +62,36 @@ document.addEventListener('DOMContentLoaded', () => {
     headers.forEach((header) => {
         header.addEventListener("mousedown", function (e) {
             //Find window associated with header
-            const window = header.closest(".window");
+            const windowElement = header.closest(".window");
 
             // Bring to front
-            window.style.zIndex = zIndexCounter++;
+            windowElement.style.zIndex = zIndexCounter++;
             
             // Stops dragging the wrong element by accident. Checks for the correct window and correct header combination
-            if (e.target !== window && !window.contains(e.target))
+            if (e.target !== windowElement && !windowElement.contains(e.target))
                 return;
             
             // Prevents text selection on other windows
             document.body.style.userSelect = "none";
 
             // Find offsets from mouse to window
-            let dX = e.clientX - window.offsetLeft;
-            let dY = e.clientY - window.offsetTop;
+            let dX = e.clientX - windowElement.offsetLeft;
+            let dY = e.clientY - windowElement.offsetTop;
 
             function onMouseMove(e) {
-                window.style.left = (e.clientX - dX) + 'px';
-                window.style.top = (e.clientY - dY) + 'px';
+                rect = windowElement.getBoundingClientRect();
+                // if(rect.left >= 0){
+                //     windowElement.style.left = (e.clientX - dX) + 'px';
+                // }
+                // if(rect.right <= window.innerWidth){
+                    
+                // }
+                // taskbarHeight = document.getElementById("bottom-taskbar").innerHeight;
+                // if(rect.bottom <= window.innerHeight - taskbarHeight){
+                    
+                // }
+                windowElement.style.left = (e.clientX - dX) + 'px';
+                windowElement.style.top = (e.clientY - dY) + 'px';
             }
 
             function onMouseUp() {
