@@ -1,11 +1,36 @@
 zIndexCounter = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Make all hyperlinks open in a new tab
     document.querySelectorAll('a').forEach(function(link) {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
     });
 
+    // Make all exit symbols close their respective window
+    const exits = document.querySelectorAll(".title-bar-controls");
+    exits.forEach((exit) => {
+        const windowElement = exit.closest(".window");
+        buttons = exit.querySelectorAll("button");
+        minimize = buttons[0];
+        close = buttons[1];
+        
+        minimize.addEventListener("click", function(e) {
+            // makes sure to mimize correct window
+            if (e.target !== windowElement && !windowElement.contains(e.target))
+                return;
+
+            document.getElementById(windowElement.id).style.display = "none";
+        })
+        close.addEventListener("click", function(e) {
+            // makes sure to close correct window
+            if (e.target !== windowElement && !windowElement.contains(e.target))
+                return;
+            
+            document.getElementById(windowElement.id).style.display = "none";
+        })
+        
+    })
 
     // Goes through all icons to check for updates
     const images = document.querySelectorAll(".icon-image")
@@ -79,17 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let dY = e.clientY - windowElement.offsetTop;
 
             function onMouseMove(e) {
-                rect = windowElement.getBoundingClientRect();
-                // if(rect.left >= 0){
-                //     windowElement.style.left = (e.clientX - dX) + 'px';
-                // }
-                // if(rect.right <= window.innerWidth){
-                    
-                // }
-                // taskbarHeight = document.getElementById("bottom-taskbar").innerHeight;
-                // if(rect.bottom <= window.innerHeight - taskbarHeight){
-                    
-                // }
                 windowElement.style.left = (e.clientX - dX) + 'px';
                 windowElement.style.top = (e.clientY - dY) + 'px';
             }

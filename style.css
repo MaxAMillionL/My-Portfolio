@@ -4,7 +4,9 @@
 body{
     background-color: #008080;
     cursor: url("icons/Cursor.png"), auto;
-    overflow: hidden; 
+    overflow: hidden;
+    -moz-transform: scale(1.3); /* Firefox */
+    zoom:130%; /* Chrome */
 }
 button:hover{
     cursor: url("icons/Cursor.png"), auto;  
