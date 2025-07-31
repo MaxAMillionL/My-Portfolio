@@ -38,6 +38,12 @@ button:hover{
     display: none;
     position: absolute;
 }
+.window.open{
+    display: block;
+}
+.window.minimized{
+    display: none;
+}
 .dark {
     filter: brightness(40%); /* Turn into dark shadow version of image */
 }

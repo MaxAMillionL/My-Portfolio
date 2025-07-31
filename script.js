@@ -1,22 +1,74 @@
 zIndexCounter = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Helper function for the 
     function addIcon(windowElement, ImageElement){
-        taskbarDiv = document.getElementById("bottom-taskbar").children[1];
+        const taskbarDiv = document.getElementById("icons-taskbar");
+
+        // get base name of element
+        const windowString = windowElement.id;
+        const indexOfDash = windowString.indexOf("-");
+        const nameElement = windowString.substring(0, indexOfDash);
+
+        // Prevent duplicates
+        const existingIcon = taskbarDiv.querySelector(`img[name="${nameElement}"]`);
+        if (existingIcon) return;
+
+        // create new icon div
         const newIcon = document.createElement("div");
         newIcon.classList.add("icon");
-        newImage = document.createElement("img");
+
+        // add image to icon div
+        const newImage = document.createElement("img");
         newImage.classList.add("icon-image");
         newImage.src = ImageElement;
-        
-        windowString = windowElement.id;
-        indexOfDash = windowString.indexOf("-");
-        nameElement = windowString.substring(0, indexOfDash);
-
         newImage.name = nameElement;
+
+        // add all listeners
+        attachIconEvents(newImage);
+
+        // add hierarchy
         newIcon.appendChild(newImage);
         taskbarDiv.appendChild(newIcon);
-        updateImageDetection();
+    }
+
+
+    function attachIconEvents(image) {
+        // Prevent attaching events multiple times
+        if (image.dataset.initialized) return;
+
+        // all hover functions
+        image.addEventListener("mouseleave", () => {
+            image.classList.remove("dark", "bright");
+        });
+
+        image.addEventListener("mouseover", () => {
+            image.classList.add("bright");
+        });
+
+        image.addEventListener("mousedown", () => {
+            image.classList.add("dark");
+            image.classList.remove("bright");
+        });
+
+        image.addEventListener("mouseup", () => {
+            image.classList.remove("dark");
+        });
+
+        // clicking an icon functions
+        image.addEventListener("click", () => {
+            const windowName = image.name + "-window";
+            const windowElement = document.getElementById(windowName);
+
+            // Toggle minimized
+            windowElement.classList.toggle("open");
+
+            // Bring to front
+            windowElement.style.zIndex = zIndexCounter++;
+        });
+
+        // Mark image as initialized
+        image.dataset.initialized = "true";
     }
 
     function updateHyperlinks(){
@@ -26,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.setAttribute('rel', 'noopener noreferrer');
         });
     } 
+
     function updateExitAndMinimize(){
         // Make all exit symbols close their respective window
         const exits = document.querySelectorAll(".title-bar-controls");
@@ -44,79 +97,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 indexOfDash = windowString.indexOf("-");
                 imageElement = "icons\\" + windowString.substring(0, indexOfDash) + "-icon.png"
 
-                addIcon(windowElement, imageElement);
+                // remove open class
+                windowElement.classList.remove("open");
 
-                document.getElementById(windowElement.id).style.display = "none";
+                addIcon(windowElement, imageElement);
             })
             close.addEventListener("click", function(e) {
                 // makes sure to close correct window
                 if (e.target !== windowElement && !windowElement.contains(e.target))
                     return;
-                
-                document.getElementById(windowElement.id).style.display = "none";
+
+                d// remove open class
+                windowElement.classList.remove("open");
             })
             
         })
     }
-    function updateImageDetection(){
-        // Goes through all icons to check for updates
-        const images = document.querySelectorAll(".icon-image")
-        images.forEach((image) => {
+    function updateIconDetection(containerID) {
+        const container = document.getElementById(containerID);
+        if (!container) return;
 
-            // Goes through all icon images and gives them hover and click attributes for style
-            image.addEventListener("mouseleave", function() {
-                image.classList.remove("dark");
-                image.classList.remove("bright")
-            });
-            image.addEventListener("mouseover", function() {
-                image.classList.add("bright");
-            });
-
-            image.addEventListener("mousedown", function() {
-                image.classList.add("dark");
-                image.classList.remove("bright")
-            });
-
-            image.addEventListener("mouseup", function() {
-                image.classList.remove("dark");
-            });
-
-            // Opens a program if the icon is clicked. Limited by naming scheme
-            image.addEventListener("click", function() {
-                const windowName = image.name + "-window";
-                displayType = window.getComputedStyle(document.getElementById(windowName)).display;
-
-                if(displayType == "block"){
-                    document.getElementById(windowName).style.display = "none";
-                }
-                else{
-                    document.getElementById(windowName).style.display = "block";
-                }
-
-                // This changes the z-index of the iamge to move to the front. Limited by the max value of a number
-                document.getElementById(windowName).style.zIndex = zIndexCounter;
-                zIndexCounter++;
-            });
-            
-        });
-        
-        // Goes through all windows to check for updates
-        const windows = document.querySelectorAll(".window")
-        windows.forEach((windowElement) => {
-            // Moves a window to the front if it is clicked
-            windowElement.addEventListener("click", function() {
-                
-                const windowName = windowElement.id
-                document.getElementById(windowName).style.zIndex = zIndexCounter;
-                zIndexCounter++;
-            });
-            windowElement.addEventListener("mouseover", function(e) {
-                resizeBound = 10;
-                const rect = windowElement.getBoundingClientRect();
-                
-            })
-        });
+        const iconImages = container.querySelectorAll(".icon img");
+        iconImages.forEach(attachIconEvents);
     }
+
     function updateHeaderDetection(){
         // Goes through all headers to check for updates
         const headers = document.querySelectorAll(".title-bar");
@@ -161,7 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     updateExitAndMinimize();
     updateHyperlinks();
-    updateImageDetection();
+    updateIconDetection("icons-desktop");
+    updateIconDetection("icons-taskbar");
     updateHeaderDetection();
 });
 
