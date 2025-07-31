@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         newImage = document.createElement("img");
         newImage.classList.add("icon-image");
         newImage.src = ImageElement;
+        
+        windowString = windowElement.id;
+        indexOfDash = windowString.indexOf("-");
+        nameElement = windowString.substring(0, indexOfDash);
+
+        newImage.name = nameElement;
         newIcon.appendChild(newImage);
         taskbarDiv.appendChild(newIcon);
         updateImageDetection();
@@ -32,11 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // makes sure to mimize correct window
             if (e.target !== windowElement && !windowElement.contains(e.target))
                 return;
+
             windowString = windowElement.id;
             indexOfDash = windowString.indexOf("-");
             imageElement = "icons\\" + windowString.substring(0, indexOfDash) + "-icon.png"
 
             addIcon(windowElement, imageElement);
+
             document.getElementById(windowElement.id).style.display = "none";
         })
         close.addEventListener("click", function(e) {
@@ -74,7 +82,7 @@ function updateImageDetection(){
 
         // Opens a program if the icon is clicked. Limited by naming scheme
         image.addEventListener("click", function() {
-            const windowName = image.id + "-window";
+            const windowName = image.name + "-window";
             displayType = window.getComputedStyle(document.getElementById(windowName)).display;
 
             if(displayType == "block"){
