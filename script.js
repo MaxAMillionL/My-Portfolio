@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateImageDetection();
     }
 
-    function updateHypterlinks(){
+    function updateHyperlinks(){
         // Make all hyperlinks open in a new tab
         document.querySelectorAll('a').forEach(function(link) {
             link.setAttribute('target', '_blank');
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     updateExitAndMinimize();
-    updateHypterlinks();
+    updateHyperlinks();
     updateImageDetection();
     updateHeaderDetection();
 });
