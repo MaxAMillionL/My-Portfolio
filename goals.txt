@@ -7,3 +7,5 @@
 7. Make icons draggable
 8. Make blue drag selection box
 9. Make windows resizable
+
+10. Change image and icon regoniziton to be by name instead of by ID across the document

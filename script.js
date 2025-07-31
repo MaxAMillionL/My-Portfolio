@@ -1,6 +1,19 @@
 zIndexCounter = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
+    function addIcon(windowElement, ImageElement){
+        taskbarDiv = document.getElementById("bottom-taskbar").children[1];
+        const newIcon = document.createElement("div");
+        newIcon.classList.add("icon");
+        newImage = document.createElement("img");
+        newImage.classList.add("icon-image");
+        newImage.src = ImageElement;
+        newIcon.appendChild(newImage);
+        taskbarDiv.appendChild(newIcon);
+        updateImageDetection();
+    }
+
+
     // Make all hyperlinks open in a new tab
     document.querySelectorAll('a').forEach(function(link) {
         link.setAttribute('target', '_blank');
@@ -19,7 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // makes sure to mimize correct window
             if (e.target !== windowElement && !windowElement.contains(e.target))
                 return;
-            // addIcon(windowElement);
+            windowString = windowElement.id;
+            indexOfDash = windowString.indexOf("-");
+            imageElement = "icons\\" + windowString.substring(0, indexOfDash) + "-icon.png"
+
+            addIcon(windowElement, imageElement);
             document.getElementById(windowElement.id).style.display = "none";
         })
         close.addEventListener("click", function(e) {
@@ -32,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
     })
 
+function updateImageDetection(){
     // Goes through all icons to check for updates
     const images = document.querySelectorAll(".icon-image")
     images.forEach((image) => {
@@ -56,8 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Opens a program if the icon is clicked. Limited by naming scheme
         image.addEventListener("click", function() {
-            const windowName = image.id + "-window"; 
+            const windowName = image.id + "-window";
             displayType = window.getComputedStyle(document.getElementById(windowName)).display;
+
             if(displayType == "block"){
                 document.getElementById(windowName).style.display = "none";
             }
@@ -69,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(windowName).style.zIndex = zIndexCounter;
             zIndexCounter++;
         });
+        
     });
     
     // Goes through all windows to check for updates
@@ -87,6 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
         })
     });
+    return;
+}
+function updateHeaderDetection(){
+
+}
 
     // Goes through all headers to check for updates
     const headers = document.querySelectorAll(".title-bar");
@@ -126,5 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener("mouseup", onMouseUp);
         });
     })
+
+updateImageDetection();
 });
 
