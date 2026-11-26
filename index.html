@@ -33,9 +33,48 @@
                 Minesweeper
             </div>
         </div>
+        <div class="icon">
+            <img src="icons\welcome-icon.png" name="welcome" class="icon-image" id="welcome" draggable="false">
+            <div class="icon-text">
+                Help
+            </div>
+        </div>
     </div>
 
     <!-- List of all the windows -->
+
+    <!--
+        Welcome / guide window
+        Shown automatically the first time someone visits the site.
+        To change the guide, just edit the content inside "welcome-content" below.
+        To force it to show again for everyone, change WELCOME_VERSION in script.js.
+    -->
+    <div id="welcome-window" class="window" style="width: 26em; position: absolute; left: 35%; top: 12%;">
+        <div class="title-bar">
+            <div class="title-bar-text">Welcome!</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="window-body" id="welcome-content">
+            <p><b>Welcome to Max's Portfolio!</b></p>
+            <p>This site works like an old Windows desktop. Here's what you can do:</p>
+            <ul>
+                <li><b>My Projects</b>: browse my GitHub and the projects I've built.</li>
+                <li><b>My Photos</b>: look through some of my photos.</li>
+                <li><b>Minesweeper</b>: a classic game (coming soon!).</li>
+            </ul>
+            <p>
+                Click a desktop icon to open its window. Drag windows by their title bar,
+                minimize them to the taskbar, and click the taskbar icon to bring them back.
+            </p>
+            <p>You can reopen this guide anytime with the <b>Help</b> icon on the desktop.</p>
+            <section class="field-row" style="justify-content: flex-end;">
+                <button id="welcome-ok">OK</button>
+            </section>
+        </div>
+    </div>
+
     <div id="projects-window" class="window" style="width: 25em; position: absolute; left: 20%; top:10%;">
         <div class="title-bar">
             <div class="title-bar-text">My projects</div>
@@ -44,16 +83,50 @@
                 <button aria-label="Close"></button>
             </div>
         </div>
-        <ul class="tree-view">
+        <ul class="tree-view" style="max-height: 55vh; overflow-y: auto;">
             <li><a href="https://github.com/MaxAMillionL" target="_blank" rel="noopener noreferrer">Github</a></li>
             <li>
                 <details open>
                 <summary>Projects</summary>
                 <ul>
-                    <li><a href="https://maxamillionl.github.io/ASCIIArt/">ASCII Image Generator</a></li>
-                    <li><a href="https://maxamillionl.github.io/Dream-Journal/">Dream Journal</a></li>
-                    <li><a href="https://maxamillionl.github.io/Fishing/">Fishing Game Website</a></li>
-                    <li><a href="https://github.com/princeton-robotics-club/Wall-E">WALL-E OLED Display</a></li>
+                    <li>
+                        <details open>
+                        <summary>Websites</summary>
+                        <ul>
+                            <li><a href="https://maxamillionl.github.io/ASCIIArt/">ASCII Image Generator</a></li>
+                            <li><a href="https://maxamillionl.github.io/Dream-Journal/">Dream Journal</a></li>
+                            <li><a href="https://maxamillionl.github.io/Fishing/">Fishing Game Website</a></li>
+                            <li><a href="https://maxamillionl.github.io/SoulNote/">SoulNote (PDF to Notes Study Bot)</a></li>
+                            <li><a href="https://maxamillionl.github.io/DeafSounds/">DeafSounds</a></li>
+                            <li><a href="https://maxamillionl.github.io/Still-life/">Still Life</a></li>
+                            <li><a href="https://maxamillionl.github.io/Max-Homepage/">Max A Million Homepage</a></li>
+                            <li><a href="https://maxamillionl.github.io/VIS-208-Valentines/">Valentine's Day Website</a></li>
+                            <li><a href="https://maxamillionl.github.io/CSS-Training/">CSS Training</a></li>
+                        </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details open>
+                        <summary>Robotics &amp; Hardware</summary>
+                        <ul>
+                            <li><a href="https://github.com/princeton-robotics-club/Wall-E">WALL-E OLED Display</a></li>
+                            <li><a href="https://github.com/MaxAMillionL/HackPrincetonCarSafety">HackPrinceton Car Safety</a></li>
+                            <li><a href="https://github.com/MaxAMillionL/RoboticHand">Robotic Hand</a></li>
+                            <li><a href="https://github.com/MaxAMillionL/Miura-bot-2">Miura Bot 2</a></li>
+                        </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                        <summary>Simulation &amp; AI</summary>
+                        <ul>
+                            <li><a href="https://github.com/MaxAMillionL/miura-simulation-thesis">Miura Simulation (Thesis)</a></li>
+                            <li><a href="https://github.com/MaxAMillionL/Miura-Thesis-Simplified">Miura Simulation (Simplified)</a></li>
+                            <li><a href="https://github.com/MaxAMillionL/manim-miura">Miura Manim Animations</a></li>
+                            <li><a href="https://github.com/MaxAMillionL/langgraph_intro">LangGraph Intro</a></li>
+                        </ul>
+                        </details>
+                    </li>
                     <li>
                         
                         <details>
@@ -67,7 +140,6 @@
                             <li><a href="https://github.com/MaxAMillionL/KDTree">KDTrees</a></li>
                             <li><a href="https://github.com/MaxAMillionL/seam-carver">Seam Carver</a></li>
                             <li><a href="https://github.com/MaxAMillionL/Percolation">Image Percolation</a></li>
-                            <li><a href=""></a></li>
 
                         </ul>
                         </details>

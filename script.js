@@ -84,11 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const exits = document.querySelectorAll(".title-bar-controls");
         exits.forEach((exit) => {
             const windowElement = exit.closest(".window");
-            buttons = exit.querySelectorAll("button");
-            minimize = buttons[0];
-            close = buttons[1];
+            // Find buttons by label so windows can have just a close button
+            const minimize = exit.querySelector('button[aria-label="Minimize"]');
+            const close = exit.querySelector('button[aria-label="Close"]');
             
-            minimize.addEventListener("click", function(e) {
+            if (minimize) minimize.addEventListener("click", function(e) {
                 // makes sure to mimize correct window
                 if (e.target !== windowElement && !windowElement.contains(e.target))
                     return;
@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 addIcon(windowElement, imageElement);
             })
-            close.addEventListener("click", function(e) {
+            if (close) close.addEventListener("click", function(e) {
                 // makes sure to close correct window
                 if (e.target !== windowElement && !windowElement.contains(e.target))
                     return;
 
-                d// remove open class
+                // remove open class
                 windowElement.classList.remove("open");
             })
             
@@ -168,5 +168,34 @@ document.addEventListener('DOMContentLoaded', () => {
     updateIconDetection("icons-desktop");
     updateIconDetection("icons-taskbar");
     updateHeaderDetection();
+    showWelcomeOnFirstVisit();
 });
+
+// Bump this number whenever the welcome guide changes and you want
+// returning visitors to see it again.
+const WELCOME_VERSION = "1";
+
+function showWelcomeOnFirstVisit() {
+    const welcome = document.getElementById("welcome-window");
+    if (!welcome) return;
+
+    const okButton = document.getElementById("welcome-ok");
+    if (okButton) {
+        okButton.addEventListener("click", () => welcome.classList.remove("open"));
+    }
+
+    let seenVersion = null;
+    try {
+        seenVersion = localStorage.getItem("welcomeSeen");
+    } catch (e) { /* storage blocked: just show the guide */ }
+
+    if (seenVersion === WELCOME_VERSION) return;
+
+    welcome.classList.add("open");
+    welcome.style.zIndex = zIndexCounter++;
+
+    try {
+        localStorage.setItem("welcomeSeen", WELCOME_VERSION);
+    } catch (e) { /* ignore */ }
+}
 
