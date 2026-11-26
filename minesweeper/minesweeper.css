@@ -1,0 +1,120 @@
+#minesweeper-game {
+    --ms-cell-size: 16px;
+    padding: 6px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ms-controls {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.ms-controls button {
+    min-width: 0;
+    padding: 0 8px;
+}
+
+.ms-controls button.active {
+    box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
+                inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+}
+
+/* Sunken frame around the whole game */
+.ms-frame {
+    display: inline-block;
+    padding: 6px;
+    background: #c0c0c0;
+    box-shadow: inset -2px -2px #808080, inset 2px 2px #ffffff;
+}
+
+.ms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 5px;
+    margin-bottom: 6px;
+    box-shadow: inset 2px 2px #808080, inset -2px -2px #ffffff;
+}
+
+.ms-display {
+    min-width: 39px;
+    padding: 1px 2px;
+    background: #000000;
+    color: #ff0000;
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: right;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff;
+}
+
+.ms-face {
+    min-width: 0;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1;
+}
+
+.ms-grid {
+    display: grid;
+    border-top: 3px solid #808080;
+    border-left: 3px solid #808080;
+    border-right: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+
+/* Unrevealed cell: raised */
+.ms-cell {
+    width: var(--ms-cell-size);
+    height: var(--ms-cell-size);
+    box-sizing: border-box;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 1;
+}
+
+.ms-cell.ms-flagged {
+    font-size: 9px;
+}
+
+.ms-cell:not(.ms-revealed):active {
+    border: none;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+}
+
+/* Revealed cell: flat */
+.ms-cell.ms-revealed {
+    border: none;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    font-size: 11px;
+}
+
+.ms-cell.ms-exploded {
+    background: #ff0000;
+}
+
+/* Number colors */
+.ms-n1 { color: #0000ff; }
+.ms-n2 { color: #008000; }
+.ms-n3 { color: #ff0000; }
+.ms-n4 { color: #000080; }
+.ms-n5 { color: #800000; }
+.ms-n6 { color: #008080; }
+.ms-n7 { color: #000000; }
+.ms-n8 { color: #808080; }

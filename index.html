@@ -6,9 +6,9 @@
     <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="minesweeper.css"> -->
+    <link rel="stylesheet" href="minesweeper/minesweeper.css">
     <script src="script.js"></script>
-    <!-- <script src="minesweeper.js"></script> -->
+    <script src="minesweeper/minesweeper.js"></script>
 </head>
 
 <body>
@@ -62,7 +62,7 @@
             <ul>
                 <li><b>My Projects</b>: browse my GitHub and the projects I've built.</li>
                 <li><b>My Photos</b>: look through some of my photos.</li>
-                <li><b>Minesweeper</b>: a classic game (coming soon!).</li>
+                <li><b>Minesweeper</b>: play a round! Right-click to place flags.</li>
             </ul>
             <p>
                 Click a desktop icon to open its window. Drag windows by their title bar,
@@ -174,7 +174,7 @@
         </ul>
     </div>
 
-    <div id="minesweeper-window" class="window" style="width: 25em; position: absolute; left: 30%; top:20%;">
+    <div id="minesweeper-window" class="window" style="width: auto; position: absolute; left: 30%; top:20%;">
         <div class="title-bar">
             <div class="title-bar-text">Minesweeper</div>
             <div class="title-bar-controls">
@@ -182,8 +182,8 @@
                 <button aria-label="Close"></button>
             </div>
         </div>
-        <div id="minsweeper-game">
-            Currently in development!
+        <div id="minesweeper-game">
+            <!-- Game is built by minesweeper/minesweeper.js -->
         </div>
     </div>
 
